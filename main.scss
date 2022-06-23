@@ -1,0 +1,196 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(#d5a3ff 0%, #77a5f8 100%);
+}
+
+.wrapper {
+  width: 400px;
+  background: #fff;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 10px 10px 15px rgba(0,0,0,0.05);
+
+  header {
+    display: flex;
+    position: relative;
+    height: 55px;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+
+    #tab-1:checked ~ header .tab-1,
+    #tab-2:checked ~ header .tab-2,
+    #tab-3:checked ~ header .tab-3 {
+      color: #fff;
+    }
+
+    label {
+      height: 100%;
+      width: 30%;
+      display: flex;
+      position: relative;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      cursor: pointer;
+      z-index: 2;
+      // border: 1px solid salmon;
+
+      &:nth-child(2){
+        width: 40%;
+      }
+    }
+
+    .slider {
+      position: absolute;
+      // left: 50%;
+      height: 85%;
+      // width: 120px;
+      border-radius: inherit;
+      // transform: translateX(-50%);
+      background: linear-gradient(145deg, #d5a3ff 0%, #77a5f8 100%);
+      transition: all 0.3s ease;
+    }
+  }
+
+  #tab-1:checked ~ header .slider {
+    left: 0%;
+    width: 90px;
+    transform: translateX(5%);
+  }
+
+  #tab-2:checked ~ header .slider {
+    left: 50%;
+    width: 120px;
+    transform: translateX(-50%);
+  }
+
+  #tab-3:checked ~ header .slider {
+    left: 100%;
+    width: 90px;
+    transform: translateX(-105%);
+  }
+
+  input[type="radio"]{
+    display: none;
+  }
+
+  .cards-area {
+    overflow: hidden;
+
+    .cards {
+      width: 300%;
+      display: flex;
+
+      .row-1 {
+        transition: all 0.3s ease;
+      }
+      
+
+      .row {
+        width: 33.4%;
+       
+        .pricing-details {
+          margin: 20px 0px;
+          text-align: center;
+          padding-bottom: 25px;
+          border-bottom: 1px solid #e6e6e6;
+
+          span {
+            font-size: 65px;
+            font-weight: 600;
+            font-family: "Poppins", sans-serif;
+            position: relative;
+
+            &::before,
+            &::after {
+              position: absolute;
+              font-family: "Poppins", sans-serif;
+              font-weight: 400;
+            }
+            
+            &::before {
+              content: "£";
+              font-size: 20px;
+              left: -13px;
+              top: 17px;
+            }
+
+             &::after {
+              content: "/month";
+              font-size: 13px;
+              right: -44px;
+              bottom: 17px;
+            }
+          }
+
+          p {
+            font-size: 18px;
+            margin-top: 5px;
+          }
+        } // pricing-details
+
+        .features {
+          li {
+            display: flex;
+            align-items: center;
+            font-size: 15px;
+            margin-bottom: 10px;
+            list-style: none;
+
+            i {
+              color: #77a5f8;
+            }
+
+            span {
+              margin-left: 10px;
+            }
+          }
+        }
+      } // row
+      
+    } // cards
+  } // cards-area
+
+  button {
+    height: 55px;
+    width: 100%;
+    margin-right: 20px;
+    border: none;
+    outline: none;
+    color: #fff;
+    border-radius: 30px;
+    cursor: pointer;
+    background: linear-gradient(145deg, #d5a3ff 0%, #77a5f8 100%);
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(0.98);
+    }
+  }
+
+  #tab-1:checked ~ .cards-area .cards .row-1 {
+          margin-left: 0%;
+  }
+
+  #tab-2:checked ~ .cards-area .cards .row-1 {
+    margin-left: -33.4%;
+  }
+
+  #tab-3:checked ~ .cards-area .cards .row-1 {
+    margin-left: -66.8%;
+  }
+
+
+} // wrapper
+
